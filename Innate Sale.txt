@@ -1,0 +1,95 @@
+Create table:
+
+CREATE TABLE Sales (
+ SaleID INT PRIMARY KEY,
+ Salesperson VARCHAR(50),
+ Region VARCHAR(50),
+ Product VARCHAR(50),
+ Quantity INT,
+ SaleAmount DECIMAL(10,2)
+);
+ 
+ Insert Sample Data:
+
+INSERT INTO Sales (SaleID, Salesperson, Region, Product, Quantity, SaleAmount) VALUES
+(1, 'Alice', 'North', 'Laptop', 1, 1000.00),
+(2, 'Bob', 'South', 'Mouse', 3, 75.00),
+(3, 'Alice', 'North', 'Monitor', 2, 300.00),
+(4, 'Charlie', 'East', 'Keyboard', 1, 50.00),
+(5, 'Bob', 'South', 'Monitor', 1, 150.00),
+(6, 'Alice', 'North', 'Mouse', 2, 50.00),
+(7, 'Charlie', 'East', 'Laptop', 2, 2000.00),
+(8, 'David', 'West', 'Laptop', 1, 1100.00),
+(9, 'David', 'West', 'Mouse', 4, 100.00),
+(10, 'Eve', 'South', 'Monitor', 3, 450.00),
+(11, 'Eve', 'South', 'Keyboard', 2, 100.00),
+(12, 'Eve', 'South', 'Mouse', 1, 25.00),
+(13, 'Alice', 'North', 'Keyboard', 1, 60.00),
+(14, 'Bob', 'South', 'Laptop', 1, 1200.00),
+(15, 'Charlie', 'East', 'Mouse', 2, 50.00)
+
+
+
+
+
+
+1.Find total quantity sold by each salesperson.
+Ans:  select salesperson,count(quantity) from sale group by salesperson;
+
+2.Find salespersons who sold more than 5 items in total.
+Ans:  select salesperson,count(quantity) from sale group by salesperson having count(quantity)>5;
+
+3.Find number of products sold by each salesperson.
+Ans: select salesperson,count(quantity) from sale group by salesperson;
+
+4.List regions where total sale amount exceeded $1000.
+Ans: select region from sale group by region having sum(saleamount)>1000;
+
+5.Show salespersons who made more than 2 sales transactions.
+Ans: select salesperson from sale group by salesperson having count(quantity)>2;
+
+6.Find total sale amount by product, and show only products that made over $500 in sales.
+Ans: select product from sale group by product having sum(saleamount)>500;
+
+7.Show the total quantity sold of each product in each region.
+Ans:  select count(quantity) from sale group by region,product;
+
+8.Find salespersons who sold more than 1 type of product.
+Ans: select salesperson from sale group by salesperson having count(product)>1;
+
+9.Find the average quantity per product sold per region, where the average is greater than 1.
+Ans: select avg(quantity) from sale group by product,region having avg(quantity)>1;
+
+10.Show salespersons whose total sale amount is between $500 and $1500.
+Ans: select salesperson from sale where saleamount between 500 and 1500;
+
+11.List top-performing products (more than 3 units sold in total).
+Ans:  select product from sale group by product having sum(quantity)>3 ;
+
+12.List salespersons who sold laptops.
+Ans:  select salesperson from sale where product='laptop';
+
+13.Find total sale amount per salesperson per region, only where it exceeds $500.
+ Ans: select sum(saleamount) from sale group by salesperson,region having sum(saleamount)>500;
+
+14.Find salespersons who sold at least 2 different products in a single region.
+Ans: select salesperson from sale group by salesperson,region having count(distinct product) >1;
+
+15.Find products that were sold in more than one region.
+Ans: select product from sale group by product having count(distinct region)>1;
+
+16.Show total number of sales per product and hide products with fewer than 2 sales.
+Ans:  select product from sale group by product having sum(quantity)>2;
+
+17.Find region-wise total quantity sold by each salesperson.
+Ans:  select sum(quantity) from sale group by region,salesperson;
+
+18.Find salespersons who made more than 3 transactions and total sales amount is over
+$1000.sss
+Ans: select salesperson from sale group by salesperson having sum(quantity)>3 and sum(saleamount)>1000;
+
+19.Find average sale amount per region and show only regions with average above $200.
+Ans:  select region from sale group by region having avg(saleamount)>200;
+
+20.List regions and products where more than 3 units were sold.
+Ans:  select region,product from sale group by region,product having sum(quantity)>3;
