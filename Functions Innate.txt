@@ -1,0 +1,94 @@
+LIKE
+Write a query to find all reactions made by users whose names start with the letter 'A'.
+
+Ans:  select*from reaction where user_name like 'a%';
+
+AS (Alias)
+Write a query to display user_name as Reactor and reaction_type as Type.
+
+Ans: select user_name as reactor,reaction_type as type from reaction;
+ 
+BETWEEN
+Write a query to find all reactions where the mood level is between 4 and 8.
+
+Ans: select mood_level from reaction where mood_level between 4 and 8;
+
+AND
+Write a query to get all reactions where the type is 'like' and the mood level is above 7.
+
+Ans:select*from reaction where reaction_type='like' and mood_level>7;
+
+OR
+Write a query to list all reactions where the type is either 'love' or 'angry'.
+
+Ans: select*from reaction where reaction_type='love' or reaction_type ='angry';
+
+NOT
+Write a query to show all reactions that are not of type 'sad'.
+
+Ans:  select*from reaction where not reaction_type='sad' ;
+
+IN
+Write a query to find all reactions where the reaction type is 'like', 'wow', or 'love'.
+
+Ans: select*from reaction where reaction_type in('love','wow','like');
+
+IS NULL
+Write a query to display all reactions where the comment is missing (i.e., NULL).
+
+Ans:select*from reaction where comment is null;
+
+IS NOT NULL
+Write a query to find all reactions that include a comment.
+
+Ans: select*from reaction where comment is not null;
+
+UPPER()
+Write a query to show all usernames in uppercase.
+
+Ans: select upper(user_name) from reaction;
+
+LOWER()
+Write a query to show all reaction types in lowercase.
+
+Ans: select lower(reaction_type) from reaction;
+
+LENGTH()
+Write a query to find all users whose usernames are longer than 6 characters.
+
+Ans: select user_name from reaction where length(user_name)>6;
+
+NOW()
+Write a query to find all reactions made today (based on the created_at column).
+
+Ans: select reaction_type from reaction where date(created_at)=date(now());
+
+DATE()
+Write a query to extract and show only the date part from the created_at column.
+
+Ans: select date(created_at) from reaction;
+
+LIKE with %
+Write a query to find all users whose name contains the substring 'an'.
+
+Ans: select user_name from reaction where user_name like '%an%';
+
+ROUND()
+Write a query to display each user's mood level rounded to the nearest 5.
+
+Ans:
+
+SUBSTR + UPPER()
+Write a query to show the first 2 letters of each user's name in uppercase.
+
+Ans: select upper(substr(user_name,1,2)) from reaction;
+
+NOT IN (with values)
+Write a query to find all reactions not made on posts with IDs 10, 20, or 30.
+
+Ans:  select reaction_type from reaction where id not in (10,20,30);
+
+COUNT and IS NULL
+Write a query to count how many reactions have no comment.
+
+Ans: 
